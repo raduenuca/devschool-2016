@@ -1,4 +1,4 @@
-https://gitter.im/devschool-2016/Lobby?utm_source=share-link&utm_medium=link&utm_campaign=share-link
+[![Gitter](https://badges.gitter.im/raduenuca/devschool-2016.svg)](https://gitter.im/raduenuca/devschool-2016?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge)
 
 # devschool-2016
 ING {Dev}School 2016
