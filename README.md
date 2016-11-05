@@ -2,3 +2,5 @@
 
 # devschool-2016
 ING {Dev}School 2016
+
+- Slides are here [https://raduenuca.github.io/devschool-slides](https://raduenuca.github.io/devschool-slides)

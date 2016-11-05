@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="toDoApp">
+    <head>
+        <meta charset="UTF-8">
+        <title>TO Do List</title>
+
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+              crossorigin="anonymous">
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+              integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+              crossorigin="anonymous">
+    </head>
+    <body ng-controller="ToDoCtrl as vm">
+        <div class="page-header">
+            <h1>
+                {{vm.todo.user}}'s To Do List
+                <span class="label label-default" ng-hide="vm.incompleteCount() === 0" ng-class="vm.warningLevel()">
+                    {{vm.incompleteCount()}}
+                </span>
+            </h1>
+        </div>
+        <div class="panel">
+            <div class="input-group">
+                <input class="form-control" ng-model="actionText"/>
+                <span class="input-group-btn">
+                    <button class="btn btn-default" ng-click="vm.addNewItem(actionText)">Add</button>
+                </span>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Done</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in vm.todo.items | checkedItems: showComplete | orderBy: 'action'">
+                        <td>{{item.action}}</td>
+                        <td><input type="checkbox" ng-model="item.done"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="checkbox-inline">
+                <label>
+                    <input type="checkbox" ng-model="showComplete"> Show Complete
+                </label>
+            </div>
+        </div>
+
+        <script type="text/javascript"
+                src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+        <script src="app/app.module.js"></script>
+        <script src="app/app.service.js"></script>
+        <script src="app/app.filter.js"></script>
+        <script src="app/app.controller.js"></script>
+    </body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contact Us</title>
+    <link href="contact1.css" rel="stylesheet" type="text/css"/>
+    <link href="contact.css" rel="stylesheet" type="text/css"/>
+    <!--<style type="text/css">-->
+    <!--h1 {-->
+    <!--color: blue;-->
+    <!--}-->
+    <!--</style>-->
+
+    <script src="js1.js"></script>
+    <script src="js2.js"></script>
+</head>
+<body>
+<h1 id="title">Contact Contoso Conferencing</h1>
+
+<p>Contoso Conferencing Ltd.</p>
+<p>123 South Street<br/>
+    Somewhere<br/>
+    Over There<br/>
+    <em>USA</em></p>
+
+<p>
+    <a href="mailto:contact@contoso.com">
+        contact@contoso.com</a>
+</p>
+<p>
+    If you would like to contact Contoso Conferencing, whether you're interested in our
+    services or in a conference we're currently organizing, don't hesitate to contact us
+    using our enquiry form (<strong>Bold fields</strong> are required).
+</p>
+
+<form method="Post" action="support.aspx" id="myForm">
+    <fieldset>
+        <legend>
+            Your Details and Enquiry
+        </legend>
+        <ol>
+            <li>
+                <label for="UserName">
+                    <strong>Name</strong><br/>
+                    <input type="text" name="UserName" id="UserName"/>
+                </label>
+            </li>
+            <li>
+                <label>
+                    Telephone<br/>
+                    <input type="text"
+                           name="Phone"/>
+                </label>
+            </li>
+            <li>
+                <label>
+                    Email Address<br/>
+                    <input type="text" name="Email"/>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <strong>Message</strong><br/>
+                    <textarea name="Message" cols="30" rows="10" placeholder="Add your message here"></textarea>
+                </label>
+            </li>
+        </ol>
+    </fieldset>
+    <button type="button" onclick="inject();">Inject</button>
+</form>
+
+<script type="application/javascript">
+//    js1.myFunction();
+//    js2.myFunction();
+
+//message="something else";
+//js1.myFunction();
+
+    function inject()
+    {
+        var script = document.createElement("script");
+        script.appendChild(document.createTextNode("alert('Injected !');"));
+        document.getElementById("title").appendChild(script);
+    }
+</script>
+</body>
+</html>
