@@ -6,6 +6,8 @@
 ```
     npm Install
     bower install
+
+    gulp serve
 ```
 
 ## Exercise
@@ -26,6 +28,8 @@
 - The Tasks column displays an ordered list of user's task
 - Sort the table by User name and total hours
 - Get some initial values with AJAX
+
+- Also add the gulp tasks done during the classroom
 
 ### Tips
 - Object arrays and nested object arrays
