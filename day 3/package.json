@@ -1,0 +1,22 @@
+{
+  "name": "day3",
+  "version": "1.0.0",
+  "description": "- Task managers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-angular-filesort": "^1.1.1",
+    "gulp-inject": "^4.1.0",
+    "gulp-jscs": "^4.0.0",
+    "gulp-jshint": "^2.0.2",
+    "gulp-load-plugins": "^1.4.0",
+    "gulp-server-livereload": "^1.9.2",
+    "jshint": "^2.9.4",
+    "wiredep": "^4.0.0"
+  }
+}
