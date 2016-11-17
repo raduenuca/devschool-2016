@@ -6,6 +6,8 @@ npm-debug.log*
 node_modules
 src/vendor
 
+build
+
 # Optional npm cache directory
 .npm
 

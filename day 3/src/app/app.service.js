@@ -8,7 +8,7 @@
 
         return {
             getItems: getItems
-        }
+        };
     };
 
     module.factory("toDoService", toDoService);

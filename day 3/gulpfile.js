@@ -1,10 +1,12 @@
 var gulp = require('gulp');
 var wiredep = require('wiredep').stream;
+var path = require('path');
 
 var $ = require('gulp-load-plugins')();
+var del = require('del');
 
 gulp.task('analyze', function(){
-    gulp.src(['src/**/*.js', 'gulpfile.js'])
+    gulp.src(['src/**/*.js', 'gulpfile.js', '!src/vendor/**/*.js'])
         .pipe($.jshint())
         .pipe($.jshint.reporter('default'))
         .pipe($.jshint.reporter('fail'))
@@ -29,4 +31,17 @@ gulp.task('serve', ['inject', 'analyze'] , function(){
             livereload: true,
             open: true
         }));
+});
+
+gulp.task('clean', function () {
+    return del([path.join('build', '/')]);
+});
+
+gulp.task('build', ['inject', 'analyze'], function(){
+    return gulp.src('src/index.html')
+        .pipe($.useref())
+        .pipe($.if('*.js', $.ngAnnotate()))
+        .pipe($.if('*.js', $.uglify()))
+        .pipe($.if('*.css', $.cleanCss()))
+        .pipe(gulp.dest('build'));
 });

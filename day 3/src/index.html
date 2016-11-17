@@ -4,12 +4,16 @@
         <meta charset="UTF-8">
         <title>TO Do List</title>
 
+        <!-- build:css css/vendor.css -->
         <!-- bower:css -->
         <link rel="stylesheet" href="vendor/bootstrap-css/css/bootstrap.min.css" />
         <!-- endbower -->
+        <!-- endbuild -->
 
+        <!-- build:css css/app.css -->
         <!-- inject:css -->
         <!-- endinject -->
+        <!-- endbuild -->
 
     </head>
     <body ng-controller="ToDoCtrl as vm">
@@ -52,10 +56,13 @@
 
         <hello-world></hello-world>
 
+        <!-- build:js js/vendor.js -->
         <!-- bower:js -->
         <script src="vendor/angular/angular.js"></script>
         <!-- endbower -->
+        <!-- endbuild -->
 
+        <!-- build:js js/app.js -->
         <!-- inject:js -->
         <script src="app/app.module.js"></script>
         <script src="app/app.service.js"></script>
@@ -63,5 +70,6 @@
         <script src="app/app.directive.js"></script>
         <script src="app/app.controller.js"></script>
         <!-- endinject -->
+        <!-- endbuild -->
     </body>
 </html>
