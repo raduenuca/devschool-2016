@@ -1,0 +1,18 @@
+# Logs
+*.log
+npm-debug.log*
+
+# Dependency directories
+node_modules
+src/vendor
+
+build
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# IDE
+.idea

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="timeSheetApp">
+    <head>
+        <meta charset="UTF-8">
+        <title>TO Do List</title>
+
+        <!-- build:css css/vendor.css -->
+        <!-- bower:css -->
+        <link rel="stylesheet" href="vendor/bootstrap-css/css/bootstrap.min.css"/>
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <!-- build:css css/app.css -->
+        <!-- inject:css -->
+        <!-- endinject -->
+        <!-- endbuild -->
+
+    </head>
+    <body ng-controller="TimeSheetCtrl as vm">
+        <div class="container-fluid">
+            <div class="page-header">
+                <h1>
+                    Timesheet!!!
+                </h1>
+            </div>
+            <div class="panel">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label for="user">Name</label>
+                        <input class="form-control" id="user" ng-model="user"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="task">Task</label>
+                        <input class="form-control" id="task" ng-model="task"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="hours">Hours</label>
+                        <input class="form-control" id="hours" ng-model="hours"/>
+                    </div>
+                    <button class="btn btn-default" ng-click="vm.addNewTask(user, task, hours)">Add</button>
+                </form>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Tasks</th>
+                            <th>Hours</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="user in vm.timesheet.users | orderBy: ['name', '-hours']"
+                            ng-class="vm.warningLevel(user)">
+                            <td>{{user.name}}</td>
+                            <td>
+                                <ol>
+                                    <li ng-repeat="task in user.tasks | orderBy as orderedTasks track by $index">
+                                        {{task}}
+                                    </li>
+                                </ol>
+                            </td>
+                            <td>{{user.hours}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!--<hello-world></hello-world>-->
+
+        <!-- build:js js/vendor.js -->
+        <!-- bower:js -->
+        <script src="vendor/angular/angular.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <!-- build:js js/app.js -->
+        <!-- inject:js -->
+        <script src="app/app.module.js"></script>
+        <script src="app/app.service.js"></script>
+        <script src="app/app.filter.js"></script>
+        <script src="app/app.directive.js"></script>
+        <script src="app/app.controller.js"></script>
+        <!-- endinject -->
+        <!-- endbuild -->
+    </body>
+</html>
