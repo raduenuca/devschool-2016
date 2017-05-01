@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="formValidationApp">
+    <head>
+        <meta charset="UTF-8">
+        <title>Form Validation</title>
+
+        <link rel="stylesheet" href="bower_components/bootstrap-css/css/bootstrap.css">
+        <link rel="stylesheet" href="bower_components/bootstrap-css/css/bootstrap-theme.css">
+    </head>
+    <body ng-controller="FormValidationCtrl as vm">
+        <div class="page-header">
+            <h1>Form Validation</h1>
+        </div>
+        <form name="sendMoney" novalidate class="form-horizontal">
+            <div class="form-group" ng-class="{'has-error': (sendMoney.$submitted || sendMoney.name.$touched) && sendMoney.name.$invalid}">
+                <label for="name" class="col-sm-2 control-label">Friend's name:</label>
+                <div class="col-sm-9">
+                    <input class="form-control"
+                           type="input"
+                           id="name"
+                           name="name"
+                           ng-model="vm.model.name"
+                           ng-minlength="5"
+                           ng-maxlength="20"
+                           required/>
+
+                    <div ng-messages="(sendMoney.$submitted || sendMoney.name.$touched) && sendMoney.name.$error" class="help-block">
+                        <div ng-message="required">This field is required</div>
+                        <div ng-message="minlength">The field is too short</div>
+                        <div ng-message="maxlength">The field is too long</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{'has-error': (sendMoney.$submitted || sendMoney.iban.$touched) && sendMoney.iban.$invalid}">
+                <label for="iban" class="col-sm-2 control-label">Friend's IBAN:</label>
+                <div class="col-sm-9">
+                    <input class="form-control"
+                           type="input"
+                           id="iban"
+                           name="iban"
+                           ng-model="vm.model.iban"
+                           ng-pattern="/^RO[0-9]{2}[a-z]{4}[0-9a-z]{16}$/i"
+                           iban-validator
+                           required/>
+
+                    <div ng-messages="(sendMoney.$submitted || sendMoney.iban.$touched) && sendMoney.iban.$error" class="help-block">
+                        <div ng-message="required">This field is required</div>
+                        <div ng-message="pattern">Enter a valid IBAN</div>
+                        <div ng-message="ibanValidator">This IBAN does not exist</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{'has-error': (sendMoney.$submitted || sendMoney.amount.$touched) && sendMoney.amount.$invalid}">
+                <label for="amount" class="col-sm-2 control-label">Amount:</label>
+                <div class="col-sm-9">
+                    <input class="form-control"
+                           type="number"
+                           id="amount"
+                           name="amount"
+                           ng-model="vm.model.amount"
+                           max-amount="100"
+                           required/>
+
+                    <div ng-messages="(sendMoney.$submitted || sendMoney.amount.$touched) && sendMoney.amount.$error" class="help-block">
+                        <div ng-message="required">This field is required</div>
+                        <div ng-message="maxAmount">The value should be less than 100</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{'has-error': (sendMoney.$submitted || sendMoney.email.$touched) && sendMoney.email.$invalid}">
+                <label for="email" class="col-sm-2 control-label">Your email</label>
+                <div class="col-sm-9">
+                    <input class="form-control"
+                           type="email"
+                           id="email"
+                           name="email"
+                           ng-model="vm.model.email"
+                           required/>
+
+                    <div ng-messages="(sendMoney.$submitted || sendMoney.email.$touched) && sendMoney.email.$error" class="help-block">
+                        <div ng-message="required">This field is required</div>
+                        <div ng-message="email">Enter a valid email</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Confirm</button>
+                </div>
+            </div>
+        </form>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-messages/angular-messages.js"></script>
+        <script src="src/app.module.js"></script>
+        <script src="src/app.comtroller.js"></script>
+        <script src="src/maxAmount.directive.js"></script>
+        <script src="src/ibanValidator.directive.js"></script>
+    </body>
+</html>
